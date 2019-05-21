@@ -1,2 +1,2 @@
 # ChatRoom
-Django开发的聊天室项目
+Django2开发的网页聊天室项目
