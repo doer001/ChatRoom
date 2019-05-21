@@ -1,0 +1,28 @@
+{% extends 'users/base_users.html' %}
+
+{% block title %}
+    详情
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p class="panel-title text-center">我留的言</p>
+                    </div>
+                    <div class="pre-scrollable panel-body">
+                        {% for msg in msgs_send %}
+                            <p style="color: #2aabd2;">TO：{{ msg.receiver.username }}（{{ msg.send_time }}）</p>
+                            <p>msg：{{ msg.msg }}</p>
+                            <br>
+                        {% empty %}
+                            <p>您还没有给任何人留言</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

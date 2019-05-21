@@ -1,0 +1,46 @@
+{% extends 'users/base_users.html' %}
+{% load staticfiles %}
+
+{% block title %} 留言 {% endblock %}
+
+
+{% block css %}
+    <script src="{% static '/ckeditor/ckeditor/ckeditor.js' %}"></script>
+    <script src="{% static '/ckeditor/ckeditor-init.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p class="panel-title text-center">From：
+                            <a style="color: #2aabd2" href="{% url 'msgs:message_sended' user_id %}">{{ sender_name }}</a>
+                        </p>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{% url 'msgs:index' %}" method="POST">
+                            {% csrf_token %}
+
+                            {% if message %}
+                                <div class="alert alert-warning">{{ message }}</div>
+                            {% endif %}
+
+                            {% for field in msg_form %}
+                                <div class="form-group">
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+                            <div>
+                                <button type="reset" class="btn btn-sm btn-primary pull-left">重置</button>
+                                <button type="submit" class="btn btn-sm btn-primary pull-right">提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

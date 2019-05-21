@@ -1,0 +1,56 @@
+{% extends 'users/base_users.html' %}
+
+{% block title %}编辑信息{% endblock %}
+
+
+{% block content %}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p class="panel-title text-center">修改信息</p>
+                    </div>
+                    <div class="panel-body">
+                        {% if message %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                        {% endif %}
+                        <form class="form" action="{% url 'users:edit' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <span class="input-group-addon">昵称：</span>
+                                <input type="text" class="form-control" name="username" value="{{ user.username }}"
+                                       maxlength="128"
+                                       required>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">邮箱：</span>
+                                <input type="email" class="form-control" name="email" value="{{ user.email }}" required>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">密码：</span>
+                                <input type="password" class="form-control" name="password" value="{{ user.password }}"
+                                       maxlength="256" required>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">性别：</span>
+                                <div style="margin-left: 20px; padding: 4px">
+                                    <label for="set_male" class="radio-inline">
+                                        <input type="radio" name="gender" value="男" id="set_male" checked>男
+                                    </label>
+                                    <label for="set_female" class="radio-inline">
+                                        <input type="radio" name="gender" value="女" id="set_female">女
+                                    </label>
+                                </div>
+                            </div>
+                            <div style="text-align:center">
+                                <button type="submit" class="btn btn-sm btn-info btn-block">保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}
+

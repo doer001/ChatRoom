@@ -1,0 +1,32 @@
+{% extends 'users/base_users.html' %}
+
+{% block title %}
+    留言板
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p class="panel-title text-center">我的留言板</p>
+                    </div>
+                    <div class="pre-scrollable panel-body">
+                        {% for msg in msgs_receive %}
+                            <div>
+                                <p style="color: #2aabd2;">From：{{ msg.sender.username }}（{{ msg.send_time }}）</p>
+                                <p>msg：{{ msg.msg }}</p>
+                            </div>
+                            <br>
+                        {% empty %}
+                            <p>暂无留言</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'users/base_users.html' %}
+
+{% block title %}
+    {{ user.username }}主页
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p class="panel-title text-center">个人信息(<a style="color: #2aabd2" href="{% url 'users:edit' %}">修改</a>)</p>
+                    </div>
+                    <div class="panel-body">
+                        <p>昵称：{{ user.username }}</p>
+                        <p>邮箱：{{ user.email }}</p>
+                        <p>性别：{{ user.gender }}</p>
+                        <p>注册时间：{{ user.reg_time }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

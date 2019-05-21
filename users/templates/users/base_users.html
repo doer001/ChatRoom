@@ -1,0 +1,27 @@
+{% load staticfiles %}<!-- 此行代码使static方法可用 --><!--  -->
+<!DOCTYPE html><!-- 声明为 HTML5 文档 -->
+<html lang="zh-CN"><!-- 声明为简体中文页面 -->
+<head>
+    <meta charset="UTF-8"><!-- 规定 HTML 文档的字符编码：UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}</title><!-- 页面标题 -->
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+    {% block css %}{% endblock %}
+</head>
+<body>
+
+    {% block nav %}
+        {% include 'users/nav.html' %}
+    {% endblock %}<!-- 页面导航栏 -->
+
+    {% block content %}
+
+
+    {% endblock %}<!-- 页面内容 -->
+
+</body>
+</html>
